@@ -4,6 +4,7 @@ import withRedux from 'next-redux-wrapper'
 import { initStore } from '../store/index'
 import { Notifs } from 'redux-notifications'
 import { Store } from 'redux'
+import ThemeProvider from '../components/ThemeProvider'
 
 interface IProps {
   store: Store
@@ -19,10 +20,12 @@ class MyApp extends App<IProps> {
 
     return (
       <Provider store={store}>
-        <>
-          <Component {...pageProps} />
-          <Notifs store={store} />
-        </>
+        <ThemeProvider>
+          <>
+            <Component {...pageProps} />
+            <Notifs store={store} />
+          </>
+        </ThemeProvider>
       </Provider>
     )
   }
