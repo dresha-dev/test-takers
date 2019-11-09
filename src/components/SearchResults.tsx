@@ -1,25 +1,21 @@
 import { useSelector } from 'react-redux'
-import { IShortUser } from '../models'
 import { IAppState } from '../store/index'
-import UserItem from './UserItem'
-import { List } from '@material-ui/core'
 import Spinner from './Spinner'
+import InfinitySearchResults from './InfinitySearchResults'
 
 const SearchResults: React.FC = () => {
-  const users: IShortUser[] = useSelector((state: IAppState) => state.search.results)
   const loading = useSelector((state: IAppState) => state.search.loading)
+  const value = useSelector((state: IAppState) => state.search.value)
+
+  if(!value){
+    return null
+  }
 
   if (loading) {
     return <Spinner />
   }
 
-  return (
-    <List component="nav" aria-label="main mailbox folders">
-      {users.map((user) => {
-        return <UserItem key={user.userId} user={user} />
-      })}
-    </List>
-  )
+  return <InfinitySearchResults />
 }
 
 export default SearchResults

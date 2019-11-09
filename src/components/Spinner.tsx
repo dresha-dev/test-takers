@@ -1,7 +1,11 @@
 import { CircularProgress, Grid } from '@material-ui/core'
 
-const Spinner: React.FC = () => (
-  <Grid container justify="center">
+interface IProps {
+  style?: React.CSSProperties
+}
+
+const Spinner: React.FC<IProps> = (props) => (
+  <Grid container justify="center" {...props}>
     <CircularProgress disableShrink />
   </Grid>
 )

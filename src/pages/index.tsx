@@ -1,8 +1,8 @@
 import React from 'react'
+import { Grid } from '@material-ui/core'
 import SearchResults from '../components/SearchResults'
 import Search from '../components/Search'
 import UserPreview from '../components/UserPreview'
-import { Grid } from '@material-ui/core'
 
 const HomePage = () => (
   <Grid container>

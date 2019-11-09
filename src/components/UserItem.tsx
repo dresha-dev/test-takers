@@ -7,10 +7,11 @@ import { IAppState } from '../store'
 
 interface IProps {
   user: IShortUser
+  style: React.CSSProperties
 }
 
 const UserItem: React.FC<IProps> = (props) => {
-  const { user } = props
+  const { user, style } = props
   const { firstName, lastName, userId } = user
   const dispatch = useDispatch()
   const activeUserId = useSelector((state: IAppState) => state.user.details && parseInt(state.user.details.userId))
@@ -20,7 +21,7 @@ const UserItem: React.FC<IProps> = (props) => {
   }, [userId])
 
   return (
-    <ListItem selected={activeUserId === userId} onClick={handleClickUserItem} button component="a">
+    <ListItem style={style} selected={activeUserId === userId} onClick={handleClickUserItem} button component="a">
       <ListItemText primary={`${firstName} ${lastName}`} />
     </ListItem>
   )
