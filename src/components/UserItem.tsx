@@ -1,8 +1,9 @@
-import { useState, useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import { useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { IShortUser } from '../models'
-import UserPreview from './UserPreview'
 import * as userDetailsActions from '../store/actions/userActions'
+import { ListItem, ListItemText } from '@material-ui/core'
+import { IAppState } from '../store'
 
 interface IProps {
   user: IShortUser
@@ -12,17 +13,16 @@ const UserItem: React.FC<IProps> = (props) => {
   const { user } = props
   const { firstName, lastName, userId } = user
   const dispatch = useDispatch()
-  const [show, setShow] = useState(false)
+  const activeUserId = useSelector((state: IAppState) => state.user.details && parseInt(state.user.details.userId))
 
   const handleClickUserItem = useCallback(() => {
     dispatch(userDetailsActions.fetchUserDetails(userId))
   }, [userId])
 
   return (
-    <section onClick={handleClickUserItem}>
-      <p>{firstName}</p>
-      <p>{lastName}</p>
-    </section>
+    <ListItem selected={activeUserId === userId} onClick={handleClickUserItem} button component="a">
+      <ListItemText primary={`${firstName} ${lastName}`} />
+    </ListItem>
   )
 }
 
