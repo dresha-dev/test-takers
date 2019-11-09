@@ -2,9 +2,9 @@ import { Provider } from 'react-redux'
 import App from 'next/app'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../store/index'
-import { Notifs } from 'redux-notifications'
 import { Store } from 'redux'
 import ThemeProvider from '../components/ThemeProvider'
+import Notification from '../components/Notification'
 import { Container } from '@material-ui/core'
 
 interface IProps {
@@ -24,7 +24,7 @@ class MyApp extends App<IProps> {
         <ThemeProvider>
           <Container>
             <Component {...pageProps} />
-            <Notifs store={store} />
+            <Notification />
           </Container>
         </ThemeProvider>
       </Provider>
