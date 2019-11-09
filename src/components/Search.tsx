@@ -2,11 +2,13 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as SearchActions from '../store/actions/searchActions'
 import styled from 'styled-components'
-import { TextField } from '@material-ui/core'
+import { TextField, Button, Grid } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 
 const SearchWrapper = styled.div(
   ({ theme }) => `
+  flex: 1;
+  margin-right: ${theme.spacing(2)}px;
   position: relative;
   border-radius: ${theme.shape.borderRadius},
   background-color: fade(${theme.palette.common.white}, 0.15);
@@ -41,6 +43,10 @@ const SearchInput = styled(TextField)(
 `,
 )
 
+const SearchContainer = styled(Grid)`
+  padding: ${({ theme }) => theme.spacing(2)}px;
+`
+
 const Search: React.FC = () => {
   const dispatch = useDispatch()
   const [value, setValue] = useState('')
@@ -57,18 +63,27 @@ const Search: React.FC = () => {
   }
 
   return (
-    <SearchWrapper>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <SearchInput
-        value={value}
-        placeholder="Search..."
-        inputProps={{ 'aria-label': 'search' }}
-        onKeyPress={handleKeyPress}
-        onChange={handleChange}
-      />
-    </SearchWrapper>
+    <SearchContainer container>
+      <SearchWrapper>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <SearchInput
+          fullWidth
+          variant="outlined"
+          value={value}
+          placeholder="Search..."
+          inputProps={{ 'aria-label': 'search' }}
+          onKeyPress={handleKeyPress}
+          onChange={handleChange}
+        />
+      </SearchWrapper>
+      <Grid item>
+        <Button variant="contained" color="primary">
+          Search
+        </Button>
+      </Grid>
+    </SearchContainer>
   )
 }
 

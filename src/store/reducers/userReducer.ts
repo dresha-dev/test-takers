@@ -13,13 +13,20 @@ const handleSetDetails = (state: IUserState, action) => {
   return { ...state, details }
 }
 
+const handleStartLoading = (state: IUserState) => {
+  return {
+    details: null,
+    loading: true,
+  }
+}
+
 const userReducer = createReducer(
   {
     loading: false,
     details: null,
   },
   {
-    [USER_DETAILS_SHOW_LOADING]: handlerShowLoading,
+    [USER_DETAILS_SHOW_LOADING]: handleStartLoading,
     [USER_DETAILS_HIDE_LOADING]: handlerHideLoading,
     [USER_DETAILS_SET_RESULTS]: handleSetDetails,
   },

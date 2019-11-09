@@ -1,4 +1,4 @@
-// For more details see https://web.dev/virtualize-long-lists-react-window/
+// NOTE: For more details https://web.dev/virtualize-long-lists-react-window/
 import React from 'react'
 import { FixedSizeList } from 'react-window'
 import InfiniteLoader from 'react-window-infinite-loader'
@@ -24,7 +24,7 @@ const ListComponent = (props) => {
       {({ onItemsRendered, ref }) => (
         <FixedSizeList
           height={400}
-          width={400}
+          width={'100%'}
           itemCount={itemCount}
           itemSize={40}
           onItemsRendered={onItemsRendered}
