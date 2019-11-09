@@ -1,6 +1,14 @@
 import React from 'react'
-import User from '../components/User'
+import SearchResults from '../components/SearchResults'
+import Search from '../components/Search'
+import UserPreview from '../components/UserPreview'
 
-const Home = () => <User />
+const HomePage = () => (
+  <div>
+    <Search />
+    <SearchResults />
+    <UserPreview />
+  </div>
+)
 
-export default Home
+export default HomePage
