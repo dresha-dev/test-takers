@@ -8,3 +8,11 @@ export const createReducer = <State, Types extends string, Actions extends Actio
   handlers: Handlers<State, Types, Actions>,
 ) => (state = initialState, action: Actions) =>
   handlers.hasOwnProperty(action.type) ? handlers[action.type as Types](state, action) : state
+
+export const handlerShowLoading = (state) => {
+  return { ...state, loading: true }
+}
+
+export const handlerHideLoading = (state) => {
+  return { ...state, loading: false }
+}

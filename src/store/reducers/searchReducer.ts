@@ -1,15 +1,14 @@
-import { createReducer } from '../../utils/redux'
+import { createReducer, handlerHideLoading, handlerShowLoading } from '../../utils/redux'
 import { SEARCH_HIDE_LOADING, SEARCH_SHOW_LOADING, SEARCH_SET_RESULTS } from '../actions/searchActions'
+import { IShortUser } from '../../models'
 
-const showLoading = (state) => {
-  return { ...state, loading: true }
+interface ISearchState {
+  loading: boolean
+  hasMore: boolean
+  details: IShortUser[]
 }
 
-const hideLoading = (state) => {
-  return { ...state, loading: true }
-}
-
-const handleSetResults = (state, action) => {
+const handleSetResults = (state: ISearchState, action) => {
   const { results } = action.payload
 
   return { ...state, results }
@@ -22,8 +21,8 @@ const searchReducer = createReducer(
     results: [],
   },
   {
-    [SEARCH_SHOW_LOADING]: showLoading,
-    [SEARCH_HIDE_LOADING]: hideLoading,
+    [SEARCH_SHOW_LOADING]: handlerShowLoading,
+    [SEARCH_HIDE_LOADING]: handlerHideLoading,
     [SEARCH_SET_RESULTS]: handleSetResults,
   },
 )

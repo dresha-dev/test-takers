@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as SearchActions from '../store/actions/searchActions'
 import styled from 'styled-components'
-import { InputBase } from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 
 const SearchWrapper = styled.div(
@@ -29,7 +29,7 @@ const SearchIconWrapper = styled.div(
 `,
 )
 
-const SearchInput = styled(InputBase)(
+const SearchInput = styled(TextField)(
   ({ theme }) => `
   color: inherit;
 
