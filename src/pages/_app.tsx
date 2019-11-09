@@ -5,6 +5,7 @@ import { initStore } from '../store/index'
 import { Notifs } from 'redux-notifications'
 import { Store } from 'redux'
 import ThemeProvider from '../components/ThemeProvider'
+import { Container } from '@material-ui/core'
 
 interface IProps {
   store: Store
@@ -21,10 +22,10 @@ class MyApp extends App<IProps> {
     return (
       <Provider store={store}>
         <ThemeProvider>
-          <>
+          <Container>
             <Component {...pageProps} />
             <Notifs store={store} />
-          </>
+          </Container>
         </ThemeProvider>
       </Provider>
     )
