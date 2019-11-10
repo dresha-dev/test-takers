@@ -8,7 +8,7 @@ const SearchResults: React.FC = () => {
   const loading = useSelector((state: IAppState) => state.search.loading)
   const value = useSelector((state: IAppState) => state.search.value)
 
-  if (!value) {
+  if (value === null) {
     return null
   }
 

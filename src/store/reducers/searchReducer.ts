@@ -1,4 +1,4 @@
-import { createReducer, handlerHideLoading, handlerShowLoading } from '../../utils/redux'
+import { createReducer, handlerHideLoading } from '../../utils/redux'
 import {
   SEARCH_HIDE_LOADING,
   SEARCH_SHOW_LOADING,
@@ -11,7 +11,7 @@ import {
 import { IShortUser } from '../../models'
 
 interface ISearchState {
-  value: string
+  value: string | null
   loading: boolean
   moreItemsLoading: boolean
   hasNextPage: boolean
@@ -51,12 +51,16 @@ const handleStartSearch = (state, action) => {
   return {
     ...state,
     value,
+    loading: true,
+    moreItemsLoading: false,
+    hasNextPage: true,
+    items: [],
   }
 }
 
 const searchReducer = createReducer(
   {
-    value: '',
+    value: null,
     loading: false,
     moreItemsLoading: false,
     hasNextPage: true,

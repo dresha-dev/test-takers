@@ -55,10 +55,14 @@ const Search: React.FC = () => {
     setValue(event.target.value)
   }
 
+  const handleSearch = () => {
+    dispatch(SearchActions.findUserByName(value))
+  }
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       event.preventDefault()
-      dispatch(SearchActions.findUserByName(value))
+      handleSearch()
     }
   }
 
@@ -79,7 +83,7 @@ const Search: React.FC = () => {
         />
       </SearchWrapper>
       <Grid item>
-        <Button variant="contained" color="primary">
+        <Button onClick={handleSearch} variant="contained" color="primary">
           Search
         </Button>
       </Grid>

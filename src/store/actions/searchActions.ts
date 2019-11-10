@@ -22,16 +22,12 @@ export const findUserByName = (name: string) => async (dispatch) => {
   try {
     const items = await API.findUser({ name })
 
-    if (items.length === 0) {
-      // TODO: show no results
-    } else {
-      dispatch({
-        type: SEARCH_SET_RESULTS,
-        payload: {
-          items,
-        },
-      })
-    }
+    dispatch({
+      type: SEARCH_SET_RESULTS,
+      payload: {
+        items,
+      },
+    })
   } catch (error) {
     dispatch(
       notifSend({
@@ -74,7 +70,6 @@ export const loadMore = () => async (dispatch, getState) => {
         items,
       },
     })
-    
   } catch (error) {
     dispatch(
       notifSend({

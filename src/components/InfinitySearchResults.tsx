@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { IShortUser } from '../models'
 import { IAppState } from '../store'
 import * as searchActions from '../store/actions/searchActions'
+import { Typography } from '@material-ui/core'
 
 const InfinitySearchResults = () => {
   const dispatch = useDispatch()
@@ -13,6 +14,14 @@ const InfinitySearchResults = () => {
 
   const loadMore = () => {
     dispatch(searchActions.loadMore())
+  }
+
+  if (items.length === 0) {
+    return (
+      <Typography align="center" variant="h5">
+        No results
+      </Typography>
+    )
   }
 
   return (
