@@ -1,5 +1,13 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme, Theme } from '@material-ui/core/styles'
 
-const theme = createMuiTheme()
+const theme: Theme = createMuiTheme({
+  overrides: {
+    MuiCardHeader: {
+      title: {
+        textTransform: 'capitalize',
+      },
+    },
+  },
+})
 
 export default theme

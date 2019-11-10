@@ -12,6 +12,7 @@ interface IProps {
 
 const ItemText = styled(ListItemText)`
   padding: ${({ theme }) => theme.spacing(2)}px;
+  text-transform: capitalize;
 `
 
 const UserItem: React.FC<IProps> = (props) => {
