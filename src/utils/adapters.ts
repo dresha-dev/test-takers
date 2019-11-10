@@ -9,7 +9,8 @@ export const toJSON = async (file: string) => {
 export const csvToJSON = async (file: string) => {
   try {
     const lines = file.split('\n')
-    const headers = lines[0].split(',')
+    const headLine = lines.shift()
+    const headers = headLine.split(',')
 
     return lines.map((line) => {
       const currentline = line.split(',')
