@@ -1,5 +1,7 @@
 ## Overview
 
+[Quick preview](https://test-takers.herokuapp.com)
+
 Project is written on typescript and using `nextjs` as framework. Used `Redux` for keeping application state. To make components looks awesome the project is using `material-ui` and `styled-components`. Components could be easily replaced to any other type of components.
 
 ## Development
