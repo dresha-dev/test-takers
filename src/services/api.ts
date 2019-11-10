@@ -1,6 +1,6 @@
-import fetch from 'isomorphic-unfetch'
 import queryString from 'query-string'
 import { IUser, IShortUser } from '../models'
+import request from '../utils/request'
 
 interface IfindUserParams {
   name?: string
@@ -10,15 +10,13 @@ interface IfindUserParams {
 
 export const findUser = async (params: IfindUserParams): Promise<IShortUser[]> => {
   const query = queryString.stringify(params)
-  const response = await fetch(`${process.env.API}/users?${query}`)
-  const users: IShortUser[] = await response.json()
+  const users: IShortUser[] = await request(`/users?${query}`)
 
   return users
 }
 
 export const getUserDetails = async (userId: number): Promise<IUser> => {
-  const response = await fetch(`${process.env.API}/user/${userId}`)
-  const userDetails: IUser = await response.json()
+  const userDetails: IUser = await request(`/user/${userId}`)
 
   return userDetails
 }
