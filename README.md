@@ -25,7 +25,7 @@ yarn run dev
         ├── services    # Services
         ├── store       # Redux store
         ├── theme       # App theme for MaterialUI
-        └── utils       # Utils (alternatively `doc`)
+        └── utils       # Utils
 
 ## How it works
 
@@ -39,17 +39,19 @@ Responsible for keeping search value in global store and fetching initial search
 
 #### `<SearchResults />`
 
-Represents infinyty scroll
-Responsible for loading more search results. By clicking on search results item set item id as active in global state
+Represents list of search results as infinyty scroll.
+Responsible for loading more search results. By clicking on search results item mark item id as active in global state
 
-`<UserPreview />`
+#### `<UserPreview />`
 Represent item details.
 Responsible for loading more details by active item id.
 
+### Data flow 
 To fetch data from API `src/services/api.ts` or change global app state, components have to dispatch specific actions from `src/store/actions`
 
-Response from API could be in different formats so that application must to apply adapter to the response (`src/utils/adapters.ts`)
+Response from API could be in different formats so that application must to apply adapter to the response data (`src/utils/adapters.ts`)
 
+### Adapter
 Util function `applyFileAdapters` received next parameters `(file, adapters)` where `file` is text representation of response, `adapters` is array of functions where each function is applied to the `file` to convert it to JSON in case of error next adapter is calling (from left to right)
 
 Usage of `applyFileAdapters`:
